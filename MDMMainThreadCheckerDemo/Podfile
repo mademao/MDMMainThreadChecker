@@ -1,0 +1,5 @@
+target 'MDMMainThreadCheckerDemo' do
+
+pod 'MDMMainThreadChecker', :path => '../'
+
+end
