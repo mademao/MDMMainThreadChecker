@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MDMMainThreadChecker: fdc0bb0b18de51cfaeed0264ee84cb9de079f862
+  MDMMainThreadChecker: f8bf66d913414d931f826c091d176599ccc032fa
 
 PODFILE CHECKSUM: 1a561a72ba6a545cbd11c820e1b32b9cee85405a
 

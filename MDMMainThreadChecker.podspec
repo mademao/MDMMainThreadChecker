@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license      = 'GPL'
     s.authors      = {'mademao' => 'ismademao@gmail.com'}
     s.platform     = :ios, '9.0'
-    s.source       = {:git => 'https://github.com/madmeao/MDMMainThreadChecker', :tag => s.version}
-    s.source_files = 'MDMMainThreadChecker/*.{h,m}'
+    s.source       = {:git => 'https://github.com/madmeao/MDMMainThreadChecker.git', :tag => s.version}
+    s.source_files = 'MDMMainThreadChecker/**/*.{h,m}'
     s.requires_arc = true
 end
