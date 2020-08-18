@@ -92,7 +92,6 @@
 				12AC8371470954A39723C295 /* Pods-MDMMainThreadCheckerDemo.debug.xcconfig */,
 				DAA13EE36D79212719E652A7 /* Pods-MDMMainThreadCheckerDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -336,6 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75C77V5UHU;
 				INFOPLIST_FILE = MDMMainThreadCheckerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -354,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75C77V5UHU;
 				INFOPLIST_FILE = MDMMainThreadCheckerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

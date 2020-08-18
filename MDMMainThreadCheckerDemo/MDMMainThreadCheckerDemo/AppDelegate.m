@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <MDMMainThreadChecker.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <MDMMainThreadCheckerDelegate>
 
 @end
 
@@ -16,8 +17,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [MDMMainThreadChecker startCheckerWithDelegate:self];
+    
     return YES;
+}
+
+
+#pragma mark - MDMMainThreadCheckerDelegate
+
+- (void)mainThreadCheckerSendReport:(NSString *)report
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"监测到子线程调用UI" message:report preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:alertAction];
+        [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 
