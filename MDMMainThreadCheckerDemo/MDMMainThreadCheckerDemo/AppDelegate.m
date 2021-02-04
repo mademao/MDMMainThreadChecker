@@ -13,6 +13,9 @@
 
 @interface AppDelegate () <MDMMainThreadCheckerDelegate>
 
+@property (nonatomic, strong) NSMutableArray<NSString *> *reportArray;
+@property (nonatomic, strong) UIAlertController *alertController;
+
 @end
 
 @implementation AppDelegate
@@ -33,12 +36,47 @@
 - (void)mainThreadCheckerSendReport:(NSString *)report
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"监测到子线程调用UI" message:report preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:alertAction];
-        [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
+        [self.reportArray addObject:report];
+        [self showReportIfNeeded];
     });
 }
 
+
+#pragma mark - private method
+
+- (void)showReportIfNeeded
+{
+    if (self.reportArray.count <= 0 ||
+        self.alertController) {
+        return;
+    }
+    
+    NSString *report = self.reportArray.firstObject;
+    self.alertController = [UIAlertController alertControllerWithTitle:@"监测到子线程调用UI"
+                                                                             message:report
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * _Nonnull action) {
+        [self.reportArray removeObject:report];
+        self.alertController = nil;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self showReportIfNeeded];
+        });
+    }];
+    [self.alertController addAction:alertAction];
+    [self.window.rootViewController presentViewController:self.alertController animated:YES completion:nil];
+}
+
+
+#pragma mark - lazy load
+
+- (NSMutableArray<NSString *> *)reportArray
+{
+    if (_reportArray == nil) {
+        _reportArray = [NSMutableArray array];
+    }
+    return _reportArray;
+}
 
 @end
