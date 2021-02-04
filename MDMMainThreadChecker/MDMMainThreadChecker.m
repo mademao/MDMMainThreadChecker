@@ -120,7 +120,7 @@ static MDMMainThreadChecker *checker = nil;
         NSData *data = [[notification userInfo] objectForKey:NSFileHandleNotificationDataItem];
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
-        if ([string containsString:@"Main Thread Checker"]) {
+        if ([string containsString:@"Main Thread Checker: UI API called on a background thread:"]) {
             [self.delegate mainThreadCheckerSendReport:string];
         }
     });
