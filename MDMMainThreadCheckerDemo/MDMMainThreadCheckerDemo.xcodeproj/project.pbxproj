@@ -13,6 +13,7 @@
 		411155DF24EAB3EE003329F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411155DE24EAB3EE003329F5 /* Assets.xcassets */; };
 		411155E224EAB3EE003329F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411155E024EAB3EE003329F5 /* LaunchScreen.storyboard */; };
 		411155E524EAB3EE003329F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 411155E424EAB3EE003329F5 /* main.m */; };
+		419DAD8E25CC186E008971FE /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 419DAD8D25CC186E008971FE /* CustomView.m */; };
 		77B7791048826A475D9C674B /* libPods-MDMMainThreadCheckerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB8E8B7804C0D328E092FEA /* libPods-MDMMainThreadCheckerDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,8 @@
 		411155E124EAB3EE003329F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		411155E324EAB3EE003329F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		411155E424EAB3EE003329F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		419DAD8C25CC186E008971FE /* CustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
+		419DAD8D25CC186E008971FE /* CustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
 		CEB8E8B7804C0D328E092FEA /* libPods-MDMMainThreadCheckerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDMMainThreadCheckerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA13EE36D79212719E652A7 /* Pods-MDMMainThreadCheckerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDMMainThreadCheckerDemo.release.xcconfig"; path = "Target Support Files/Pods-MDMMainThreadCheckerDemo/Pods-MDMMainThreadCheckerDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +72,8 @@
 				411155D324EAB3EC003329F5 /* AppDelegate.m */,
 				411155D824EAB3EC003329F5 /* ViewController.h */,
 				411155D924EAB3EC003329F5 /* ViewController.m */,
+				419DAD8C25CC186E008971FE /* CustomView.h */,
+				419DAD8D25CC186E008971FE /* CustomView.m */,
 				411155DB24EAB3EC003329F5 /* Main.storyboard */,
 				411155DE24EAB3EE003329F5 /* Assets.xcassets */,
 				411155E024EAB3EE003329F5 /* LaunchScreen.storyboard */,
@@ -192,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411155DA24EAB3EC003329F5 /* ViewController.m in Sources */,
+				419DAD8E25CC186E008971FE /* CustomView.m in Sources */,
 				411155D424EAB3EC003329F5 /* AppDelegate.m in Sources */,
 				411155E524EAB3EE003329F5 /* main.m in Sources */,
 			);

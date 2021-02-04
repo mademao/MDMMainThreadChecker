@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <MDMMainThreadChecker.h>
+#import "CustomView.h"
+#import <objc/runtime.h>
 
 @interface AppDelegate () <MDMMainThreadCheckerDelegate>
 
@@ -19,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [MDMMainThreadChecker startCheckerWithDelegate:self];
+    [MDMMainThreadChecker addCheckerForClass:[CustomView class] selector:@selector(name)];
+    [MDMMainThreadChecker addCheckerForClass:object_getClass([CustomView class]) selector:@selector(testString)];
     
     return YES;
 }

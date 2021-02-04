@@ -22,5 +22,10 @@
 /// @param delegate 代理
 + (void)startCheckerWithDelegate:(id<MDMMainThreadCheckerDelegate>)delegate;
 
+/// 增加对某个类某个方法的监测
+/// @param class 类
+/// @param selector 方法
++ (void)addCheckerForClass:(Class)class selector:(SEL)selector;
+
 @end
 

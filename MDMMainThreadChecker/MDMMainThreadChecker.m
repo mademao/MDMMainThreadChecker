@@ -63,6 +63,27 @@ static bool AmIBeingDebugged(void)
     [[MDMMainThreadChecker sharedInstance] startCheckerWithDelegate:delegate];
 }
 
+/// 增加对某个类某个方法的监测
++ (void)addCheckerForClass:(Class)class selector:(SEL)selector
+{
+    if (class == nil ||
+        selector == nil) {
+        return;
+    }
+    
+    void *handle = dlopen(NULL, RTLD_LAZY);
+    if (handle == NULL) {
+        return;
+    }
+    
+    void(*func)(Class, SEL) = dlsym(handle, "__main_thread_add_check_for_selector");
+    if (func == NULL) {
+        return;
+    }
+    
+    func(class, selector);
+}
+
 
 #pragma mark - Private Methods
 
