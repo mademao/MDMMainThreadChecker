@@ -60,6 +60,8 @@ static bool AmIBeingDebugged(void)
 
 + (void)startCheckerWithDelegate:(id<MDMMainThreadCheckerDelegate>)delegate
 {
+    //需要在主线程开启，否则会丢失NSLog的打印
+    NSAssert([NSThread isMainThread], @"[MDMMainThreadChecker startCheckerWithDelegate:]需在主线程中进行调用！！！");
     [[MDMMainThreadChecker sharedInstance] startCheckerWithDelegate:delegate];
 }
 

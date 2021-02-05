@@ -18,7 +18,7 @@
 
 @interface MDMMainThreadChecker : NSObject
 
-/// 开启主线程UI监测
+/// 开启主线程UI监测，在主线程中进行调用！！！
 /// @param delegate 代理
 + (void)startCheckerWithDelegate:(id<MDMMainThreadCheckerDelegate>)delegate;
 
