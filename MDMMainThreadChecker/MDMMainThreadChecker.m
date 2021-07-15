@@ -116,7 +116,14 @@ static MDMMainThreadChecker *checker = nil;
     return;  
 #endif
     [self redirectSTD:STDERR_FILENO];
-    dlopen("/Developer/usr/lib/libMainThreadChecker.dylib", RTLD_LAZY);
+
+    //仅为调试设置模拟器路径，正式使用时不建议在模拟器上使用（由于版本原因，可能会失效，真机不存在该问题）
+#if TARGET_IPHONE_SIMULATOR
+    const char *path = "/Applications/Xcode.app/Contents/Developer/usr/lib/libMainThreadChecker.dylib";
+#else
+    const char *path = "/Developer/usr/lib/libMainThreadChecker.dylib";
+#endif
+    dlopen(path, RTLD_LAZY);
 }
 
 - (void)redirectSTD:(int)fd
