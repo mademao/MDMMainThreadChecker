@@ -99,6 +99,8 @@ static MDMMainThreadChecker *checker = nil;
     return checker;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 - (void)startCheckerWithDelegate:(id<MDMMainThreadCheckerDelegate>)delegate
 {
     self.delegate = delegate;
@@ -125,6 +127,7 @@ static MDMMainThreadChecker *checker = nil;
 #endif
     dlopen(path, RTLD_LAZY);
 }
+#pragma clang diagnostic pop
 
 - (void)redirectSTD:(int)fd
 {
