@@ -121,11 +121,23 @@ static MDMMainThreadChecker *checker = nil;
 
     //仅为调试设置模拟器路径，正式使用时不建议在模拟器上使用（由于版本原因，可能会失效，真机不存在该问题）
 #if TARGET_IPHONE_SIMULATOR
-    const char *path = "/Applications/Xcode.app/Contents/Developer/usr/lib/libMainThreadChecker.dylib";
+    NSArray<NSString *> *pathArray = @[
+        @"/Applications/Xcode.app/Contents/Developer/usr/lib/libMainThreadChecker.dylib"
+    ];
 #else
-    const char *path = "/Developer/usr/lib/libMainThreadChecker.dylib";
+    NSArray<NSString *> *pathArray = @[
+        @"/Developer/usr/lib/libMainThreadChecker.dylib",
+        @"/usr/lib/libMainThreadChecker.dylib"
+    ];
 #endif
-    dlopen(path, RTLD_LAZY);
+    for (NSString *path in pathArray) {
+        const char *cPath = [path cStringUsingEncoding:NSUTF8StringEncoding];
+        void *handle = NULL;
+        handle = dlopen(cPath, RTLD_LAZY);
+        if (handle != NULL) {
+            break;
+        }
+    }
 }
 #pragma clang diagnostic pop
 
